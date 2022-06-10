@@ -17,10 +17,10 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ProductID", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "ProductName", nullable = false, length = 100)
-    private String productName;
+    private String name;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CategoryID", nullable = false)
@@ -38,5 +38,13 @@ public class Product {
 
     @OneToMany(mappedBy = "productID")
     private Set<TransactionDetail> transactionDetails = new LinkedHashSet<>();
+
+    public Product(String name, Category categoryID, Supplier supplierID, BigDecimal price, Integer stock) {
+        this.name = name;
+        this.categoryID = categoryID;
+        this.supplierID = supplierID;
+        this.price = price;
+        this.stock = stock;
+    }
 
 }

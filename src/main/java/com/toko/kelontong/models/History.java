@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDate;
 
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
@@ -16,10 +17,10 @@ public class History {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "HistoryID", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "\"Date\"", nullable = false)
-    private Instant date;
+    private LocalDate date;
 
     @Column(name = "ProductName", nullable = false, length = 100)
     private String productName;
@@ -29,9 +30,13 @@ public class History {
     private Customer customerID;
 
     @Column(name = "Quantity", nullable = false)
-    private Integer quantity;
+    private Long quantity;
 
-    @Column(name = "TotalPrice", nullable = false, precision = 19, scale = 4)
-    private BigDecimal totalPrice;
+    public History(String productName, Customer customerID, Long quantity) {
+        this.date = LocalDate.now();
+        this.productName = productName;
+        this.customerID = customerID;
+        this.quantity = quantity;
+    }
 
 }

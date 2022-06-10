@@ -16,10 +16,10 @@ public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SupplierID", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "SupplierName", nullable = false, length = 50)
-    private String supplierName;
+    private String name;
 
     @Column(name = "Contact", nullable = false, length = 30)
     private String contact;
@@ -27,4 +27,8 @@ public class Supplier {
     @OneToMany(mappedBy = "supplierID")
     private Set<Product> products = new LinkedHashSet<>();
 
+    public Supplier(String name, String contact) {
+        this.name = name;
+        this.contact = contact;
+    }
 }

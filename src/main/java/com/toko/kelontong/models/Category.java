@@ -16,12 +16,16 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CategoryID", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "CategoryName", nullable = false, length = 50)
-    private String categoryName;
+    private String name;
 
     @OneToMany(mappedBy = "categoryID")
     private Set<Product> products = new LinkedHashSet<>();
+
+    public Category(String name) {
+        this.name = name;
+    }
 
 }

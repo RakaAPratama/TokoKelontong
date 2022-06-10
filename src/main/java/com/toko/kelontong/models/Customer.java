@@ -16,10 +16,10 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CustomerID", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "CustomerName", nullable = false, length = 100)
-    private String customerName;
+    private String name;
 
     @Column(name = "Contact", nullable = false, length = 30)
     private String contact;
@@ -30,4 +30,12 @@ public class Customer {
     @OneToMany(mappedBy = "customerID")
     private Set<History> histories = new LinkedHashSet<>();
 
+    public Customer(String name, String contact) {
+        this.name = name;
+        this.contact = contact;
+    }
+
+    public Customer(String name) {
+        this.name = name;
+    }
 }

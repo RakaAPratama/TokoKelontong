@@ -11,12 +11,12 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "Transaction")
+@Table(name = "\"Transaction\"")
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TransactionID", nullable = false)
-    private Integer id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CustomerID", nullable = false)
@@ -25,5 +25,8 @@ public class Transaction {
     @OneToMany(mappedBy = "transactionID")
     private Set<TransactionDetail> transactionDetails = new LinkedHashSet<>();
 
+    public Transaction(Customer customerID) {
+        this.customerID = customerID;
+    }
 
 }
