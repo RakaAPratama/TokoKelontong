@@ -9,12 +9,12 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "TransactionDetail")
+@Table(name = "\"TransactionDetail\"")
 public class TransactionDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TransactionDetailID", nullable = false)
-    private Integer id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "TransactionID", nullable = false)
@@ -25,6 +25,11 @@ public class TransactionDetail {
     private Product productID;
 
     @Column(name = "Quantity", nullable = false)
-    private Integer quantity;
+    private Long quantity;
 
+    public TransactionDetail(Transaction transactionID, Product productID, Long quantity) {
+        this.transactionID = transactionID;
+        this.productID = productID;
+        this.quantity = quantity;
+    }
 }
