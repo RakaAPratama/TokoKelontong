@@ -12,7 +12,7 @@
 </div>
 
 ## About The Toko Kelontong
-This mini-project has been buiild to inventory collection of Toko Kelontong.
+This mini-project has been build to inventory collection of Toko Kelontong.
 
 Inventory data:
 * Category
